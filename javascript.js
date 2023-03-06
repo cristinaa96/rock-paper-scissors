@@ -1,6 +1,4 @@
-function getComputerChoice(){
-    for (let i = 0; i < 3; i++){
-        return i;
-    }
+function getComputerChoice(number){
+   return number;
 }
-console.log(getComputerChoice());
+console.log(getComputerChoice(2));
