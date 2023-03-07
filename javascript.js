@@ -1,4 +1,4 @@
-function getComputerChoice(number){
+function getComputerChoice(){
     let i = Math.floor(Math.random() * 3);
     let outcome = i;
 
@@ -12,7 +12,29 @@ function getComputerChoice(number){
     } else{
         outcome = "Invalid";
     }
-    number = outcome;
-    return number;
+    return outcome;
 }
-console.log(getComputerChoice());
+function playRound(playerSelection,computerSelection) {
+    let gameResult = "No one";
+   let playSel = playerSelection.toUpperCase();
+   let compSel = computerSelection.toUpperCase();
+
+   if (playSel === compSel){
+    gameResult = "Tie!";
+   } else if (playSel === "ROCK" && compSel === "SCISSORS" || playSel === "PAPER" && compSel === "ROCK" || playSel === "SCISSORS" && compSel === "PAPER"){
+    gameResult = "Player wins!"
+   }   
+   else {
+    gameResult = "Computer wins!";
+   }
+
+
+    return gameResult;
+}
+
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+
+console.log(playerSelection);
+console.log(computerSelection);
+console.log(playRound(playerSelection,computerSelection));
