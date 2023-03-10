@@ -14,23 +14,39 @@ function getComputerChoice(){
     }
     return outcome;
 }
+
+function getPlayerChoice(){
+    let playerInput = window.prompt();
+    
+    return playerInput;
+}
+
+let round = 0;
+let playerScore = 0;
+let compScore = 0;
+
 function playRound(playerSelection,computerSelection) {
     let roundResult = "No one";
    let playSel = playerSelection.toUpperCase();
    let compSel = computerSelection.toUpperCase();
-
    if (playSel === "ROCK" && compSel === "SCISSORS"){
+        playerScore += 1;
         roundResult = "Player wins! Rock beats scissors!";
    } else if (playSel === "ROCK" && compSel === "PAPER"){
+        compScore += 1;
         roundResult = "Computer wins! Paper beats rock!"
    } else if (playSel === "PAPER" && compSel === "ROCK"){
+        playerScore += 1;
         roundResult = "Player wins! Paper beats rock!";
    } else if (playSel === "PAPER" && compSel === "SCISSORS") {
+        compScore += 1;
         roundResult = "Computer wins! Scissors beats paper";
    } else if (playSel === "SCISSORS" && compSel === "PAPER"){
+        playerScore += 1;
         roundResult = "Player wins! Scissors beats paper";
    } else if (playSel === "SCISSORS" && compSel === "ROCK"){
-        roundResult = "Computer wins! Rock beats scissors!"
+        compScore += 1;
+        roundResult = "Computer wins! Rock beats scissors!";
    } else if (playSel === compSel){
         roundResult = "Tie!";
    } else {
@@ -39,25 +55,47 @@ function playRound(playerSelection,computerSelection) {
     return roundResult;
 }
 
-
-function game(gameResult){
-    let round = playRound(playerSelection,computerSelection);
+function game(){
+    playRound(playerSelection,computerSelection);
+    let roundNumber = 0;
     for (let i = 0; i < 5; i++){
-        round;
-        //console.log("This has been looped " + round + " times.");
+        roundNumber++;
+        console.log('Player picked: ' + getPlayerChoice());
+        console.log('Computer picked: ' + getComputerChoice());
     }
-    return "The result is: " + round;
+    console.log("Player score is now: " + playerScore);
+    console.log("Computer score is now: " + compScore);
 }
+
+
+function scoreResults(){
+                
+        let winner = "No one.";
+        if (playerScore > compScore){
+            winner = "Player wins!";
+        } else if (compScore > playerScore){
+            winner = "Computer wins!";
+        }
+        else{
+            winner = "It's a tie!"            
+        }
+        return winner;
+    }
+    
 
 
 
 //const playerSelection = "rock";
-let inputPrompt = prompt("Please enter rock, paper, or scissors");
-let playerSelection = inputPrompt;
+//let inputPrompt = prompt("Please enter rock, paper, or scissors");
+let playerSelection = getPlayerChoice();
+let computerSelection = getComputerChoice();
 
-const computerSelection = getComputerChoice();
-console.log(game());
+//console.log("Round number: " + round);
+//console.log("Player score: " + playerScore);
+//console.log("Computer score: " + compScore);
+//console.log("Player selected: " + playerSelection);
+//console.log("Computer selected: " + computerSelection);
+//console.log(playRound(playerSelection,computerSelection)); 
 
-console.log("Player selected: " + playerSelection);
-console.log("Computer selected: " + computerSelection);
-console.log(playRound(playerSelection,computerSelection)); 
+game();
+console.log("End results: " + scoreResults());
