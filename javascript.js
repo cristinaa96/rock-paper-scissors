@@ -17,54 +17,43 @@ function getComputerChoice(){
 
 function getPlayerChoice(){
     let playerInput = window.prompt();
-    
     return playerInput;
 }
 
-let round = 0;
-let playerScore = 0;
-let compScore = 0;
+//let round = 0;
+var playerScore = 0;
+var compScore = 0;
 
 function playRound(playerSelection,computerSelection) {
-    let roundResult = "No one";
+    let roundResult = "None.";
    let playSel = playerSelection.toUpperCase();
    let compSel = computerSelection.toUpperCase();
-   if (playSel === "ROCK" && compSel === "SCISSORS"){
-        playerScore += 1;
-        roundResult = "Player wins! Rock beats scissors!";
-   } else if (playSel === "ROCK" && compSel === "PAPER"){
+    if (playSel === "ROCK" && compSel === "SCISSORS" || playSel === "PAPER" && compSel === "ROCK" || playSel === "SCISSORS" && compSel === "PAPER"){
+        roundResult = playerScore += 1;
+
+   } else if (playSel === "ROCK" && compSel === "PAPER" || playSel === "PAPER" && compSel === "SCISSORS" || playSel === "SCISSORS" && compSel === "ROCK"){
         compScore += 1;
-        roundResult = "Computer wins! Paper beats rock!"
-   } else if (playSel === "PAPER" && compSel === "ROCK"){
-        playerScore += 1;
-        roundResult = "Player wins! Paper beats rock!";
-   } else if (playSel === "PAPER" && compSel === "SCISSORS") {
-        compScore += 1;
-        roundResult = "Computer wins! Scissors beats paper";
-   } else if (playSel === "SCISSORS" && compSel === "PAPER"){
-        playerScore += 1;
-        roundResult = "Player wins! Scissors beats paper";
-   } else if (playSel === "SCISSORS" && compSel === "ROCK"){
-        compScore += 1;
-        roundResult = "Computer wins! Rock beats scissors!";
+        roundResult = compScore;  
    } else if (playSel === compSel){
-        roundResult = "Tie!";
-   } else {
-        roundResult = "Invalid input!";
+    roundResult = "Tie";
    }
-    return roundResult;
+    else {
+        console.log("Invalid input!");
+   }
+   return roundResult;
 }
 
+
+
 function game(){
-    playRound(playerSelection,computerSelection);
-    let roundNumber = 0;
-    for (let i = 0; i < 5; i++){
-        roundNumber++;
+    
+        for (let i = 0; i < 5; i++){
+            playRound(playerSelection,computerSelection);
         console.log('Player picked: ' + getPlayerChoice());
         console.log('Computer picked: ' + getComputerChoice());
+       // console.log(playerScore);
+       // console.log(compScore);
     }
-    console.log("Player score is now: " + playerScore);
-    console.log("Computer score is now: " + compScore);
 }
 
 
@@ -80,6 +69,7 @@ function scoreResults(){
             winner = "It's a tie!"            
         }
         return winner;
+
     }
     
 
