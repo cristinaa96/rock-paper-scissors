@@ -28,17 +28,16 @@ function playRound(playerSelection,computerSelection) {
     let roundResult = "None.";
    let playSel = playerSelection.toUpperCase();
    let compSel = computerSelection.toUpperCase();
+
     if (playSel === "ROCK" && compSel === "SCISSORS" || playSel === "PAPER" && compSel === "ROCK" || playSel === "SCISSORS" && compSel === "PAPER"){
         roundResult = playerScore += 1;
-
    } else if (playSel === "ROCK" && compSel === "PAPER" || playSel === "PAPER" && compSel === "SCISSORS" || playSel === "SCISSORS" && compSel === "ROCK"){
-        compScore += 1;
-        roundResult = compScore;  
+        roundResult = compScore += 1;  
    } else if (playSel === compSel){
     roundResult = "Tie";
    }
     else {
-        console.log("Invalid input!");
+        console.log("Player entered invalid input!");
    }
    return roundResult;
 }
@@ -46,18 +45,22 @@ function playRound(playerSelection,computerSelection) {
 
 
 function game(){
-    
         for (let i = 0; i < 5; i++){
+
+            let playerSelection = getPlayerChoice();
+            let computerSelection = getComputerChoice();
             playRound(playerSelection,computerSelection);
-        console.log('Player picked: ' + getPlayerChoice());
-        console.log('Computer picked: ' + getComputerChoice());
-       // console.log(playerScore);
-       // console.log(compScore);
+
+            console.log("Player selected: " + playerSelection);
+            console.log("Computer Selected: " + computerSelection);
+            console.log("Player score: " + playerScore);
+            console.log("Computer score: " + compScore);
     }
 }
 
 
 function scoreResults(){
+    
                 
         let winner = "No one.";
         if (playerScore > compScore){
@@ -77,8 +80,9 @@ function scoreResults(){
 
 //const playerSelection = "rock";
 //let inputPrompt = prompt("Please enter rock, paper, or scissors");
-let playerSelection = getPlayerChoice();
-let computerSelection = getComputerChoice();
+
+//let playerSelection = getPlayerChoice();
+//let computerSelection = getComputerChoice();
 
 //console.log("Round number: " + round);
 //console.log("Player score: " + playerScore);
