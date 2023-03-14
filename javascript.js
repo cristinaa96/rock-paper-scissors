@@ -20,7 +20,6 @@ function getPlayerChoice(){
     return playerInput;
 }
 
-//let round = 0;
 var playerScore = 0;
 var compScore = 0;
 
@@ -75,21 +74,5 @@ function scoreResults(){
 
     }
     
-
-
-
-//const playerSelection = "rock";
-//let inputPrompt = prompt("Please enter rock, paper, or scissors");
-
-//let playerSelection = getPlayerChoice();
-//let computerSelection = getComputerChoice();
-
-//console.log("Round number: " + round);
-//console.log("Player score: " + playerScore);
-//console.log("Computer score: " + compScore);
-//console.log("Player selected: " + playerSelection);
-//console.log("Computer selected: " + computerSelection);
-//console.log(playRound(playerSelection,computerSelection)); 
-
 game();
 console.log("End results: " + scoreResults());
